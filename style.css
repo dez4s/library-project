@@ -1,0 +1,239 @@
+:root {
+    --red: #ad343eff;
+    --grey: #474747ff;
+    --yellow: #f2af29ff;
+    --black: #000000;
+    --dark-grey: rgba(0, 0, 0, 0.650);
+    --light-yellow: #E9D8A6;
+    --button-red: #f8333df2;
+    --button-green: #44af69;
+    --eggshell-white: #e0e0ceff;
+
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 40px;
+
+    --container-width: 1200px;
+    --border-radius: 8px;
+    --shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;;
+}
+
+/* CSS Reset */
+/* makes sizing simpler */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-family: 'Jost', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* min body height */
+body {
+  background-color: var(--grey);
+  margin-bottom: 45px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+header {
+    background-color: var(--red);
+    color: var(--eggshell-white);
+
+     .container {  
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+     h1 {
+        font-size: 2.1rem;
+        font-weight: 900;
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding-bottom: 5px;
+    .icon {
+        height: 22px;
+    }
+    color: var(--eggshell-white);
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.modal {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 0;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    margin: auto;
+    background-color: var(--eggshell-white);
+    color: var(--black);
+}
+
+.modal::backdrop {
+    background : rgb(0 0 0 / 0.3);
+}
+
+form { 
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    
+    label {
+        font-size: 1.05rem;
+    }
+
+    input:not([type="checkbox"]) {
+        width: 100%;
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    input:not([type="checkbox"]):hover {
+        background-color: rgb(0, 0, 0, 0.01);
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        
+    }
+
+    input:not([type="checkbox"]):focus {
+        outline: none;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+    }
+    
+    input[type="checkbox"] {
+        vertical-align: middle;
+        accent-color: var(--button-green);
+        width: 19px;
+        height: 19px;
+    }
+
+    .form-button-section {
+        display: flex;
+        gap: var(--spacing-xs);
+        * {
+            flex: 1;
+        }
+    }
+}
+
+#book-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(375px, 0.55fr));
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-md)
+}
+
+.card {
+    background-color: var(--dark-grey);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm) var(--spacing-md);
+    
+        .book-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: var(--spacing-md);
+            font-size: 1.15rem;
+            word-break: break-all;
+            font-weight: 550;
+            color: var(--eggshell-white);
+        }
+        
+        .book-button-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #remove-btn:hover {
+            background-color: var(--button-red);
+        }
+}
+
+.btn {
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    filter: brightness(75%);
+}
+
+#log-in-btn {
+    background-color: var(--eggshell-white);
+    color: var(--black);
+    font-size: 0.97rem;
+}
+
+#open-btn {
+    box-shadow: var(--shadow);
+    font-size: 1.05rem;
+    span {
+        font-weight: 750;
+        font-size: 1.25rem;
+        margin-right: 2px;
+    }
+    align-self: center;
+}
+
+#open-btn,
+#submit-btn {
+    background-color: var(--yellow);
+    color: var(--black);
+} 
+
+#close-btn {
+    background-color: rgba(0, 0, 0, 0.800);
+    color: var(--eggshell-white);
+}
+
+#read-btn.read {
+    background-color: var(--button-green);
+}
+
+@media only screen and (max-width: 850px) {
+    main > .container {
+        display: flex;
+        flex-direction: column;
+    }
+}

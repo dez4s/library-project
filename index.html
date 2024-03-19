@@ -1,13 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="javascript.js" defer></script>
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Library</title>
+    <link rel="shortcut icon" href="./images/bookshelf.png" type="image/x-icon">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Library</h1>
+        <button class="btn" id="log-in-btn">LOGIN</button>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <button class="btn" id="open-btn"><span>+</span>ADD BOOK</button>
+        <dialog class="modal">
+            <form action="">
+                <div class="form-row">
+                    <label for="title">Book title: </label>
+                    <input type="text " name="title" id="title">
+                </div>
+                <div class="form-row">
+                    <label for="author">Author: </label>
+                    <input type="text " name="author" id="author">
+                </div>
+                <div class="form-row">
+                    <label for="pages">Pages: </label>
+                    <input type="text" inputmode="numeric" name="pages" id="pages">
+                </div>
+                <div class="form-row">
+                    <label for="completed">Completed: </label>
+                    <input type="checkbox" name="completed" id="completed">
+                </div>
+                <div class="form-button-section">
+                  <button class="btn" id="close-btn" formmethod="dialog">Cancel</button>
+                  <button class="btn" id="submit-btn">Submit</button>
+                </div>
+            </form>
+          </dialog>
+        <div id="book-cards-container">
+          <div class="card">
+            <div class="book-info-section">
+              <p>Title: Harry Potter and the Phoenix Order</p>
+              <p>Author: J.K. Rowling</p>
+              <p>Pages: 394 pages</p>
+            </div>
+            <div class="book-button-section">
+              <button class="btn read" id="read-btn">Read</button>
+              <button class="btn" id="remove-btn">X</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="book-info-section">
+              <p>Title: Harry Potter and the Phoenix Order</p>
+              <p>Author: J.K. Rowling</p>
+              <p>Pages: 394 pages</p>
+            </div>
+            <div class="book-button-section">
+              <button class="btn read" id="read-btn">Read</button>
+              <button class="btn" id="remove-btn">X</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="book-info-section">
+              <p>Title: Harry Potter and the Phoenix Order</p>
+              <p>Author: J.K. Rowling</p>
+              <p>Pages: 394 pages</p>
+            </div>
+            <div class="book-button-section">
+              <button class="btn read" id="read-btn">Read</button>
+              <button class="btn" id="remove-btn">X</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="book-info-section">
+              <p>Title: Harry Potter and the Phoenix Order</p>
+              <p>Author: J.K. Rowling</p>
+              <p>Pages: 394 pages</p>
+            </div>
+            <div class="book-button-section">
+              <button class="btn read" id="read-btn">Read</button>
+              <button class="btn" id="remove-btn">X</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="book-info-section">
+              <p>Title: Harry Potter and the Phoenix Order</p>
+              <p>Author: J.K. Rowling</p>
+              <p>Pages: 394 pages</p>
+            </div>
+            <div class="book-button-section">
+              <button class="btn read" id="read-btn">Read</button>
+              <button class="btn" id="remove-btn">X</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Copyright ©</p>
+      <span id="currentYear">2024</span>
+      <p>Gabriel Panaitescu</p>
+      <a
+        href="https://github.com/dez4s?tab=overview&from=2024-03-01&to=2024-03-18"
+      >
+        <img
+          src="./images/github-logo/github-mark/github-mark-white.svg"
+          alt=""
+          class="icon"
+        />
+      </a>
+    </footer>
+  </body>
 </html>
+
