@@ -17,7 +17,8 @@
 
     --container-width: 1200px;
     --border-radius: 8px;
-    --shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;;
+    --header-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    --shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 /* CSS Reset */
@@ -60,7 +61,8 @@ html {
 header {
     background-color: var(--red);
     color: var(--eggshell-white);
-
+    box-shadow: var(--header-shadow);
+    
      .container {  
         display: flex;
         align-items: center;
@@ -81,7 +83,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 4px;
-    padding-bottom: 5px;
+    padding-bottom: var(--spacing-xs);
     .icon {
         height: 22px;
     }
@@ -95,7 +97,7 @@ footer {
 }
 
 .modal {
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: 30px 45px;
     border: 0;
     box-shadow: var(--shadow);
     border-radius: var(--border-radius);
@@ -114,13 +116,16 @@ form {
     gap: var(--spacing-xs);
     
     label {
-        font-size: 1.05rem;
+        font-weight: 500;
+        font-size: 1.3rem;
     }
 
     input:not([type="checkbox"]) {
         width: 100%;
         border-radius: var(--border-radius);
         border: 1px solid rgba(0, 0, 0, 0.3);
+        padding: var(--spacing-xs);
+        font-size: 1.2rem;
     }
 
     input:not([type="checkbox"]):hover {
@@ -133,19 +138,25 @@ form {
         outline: none;
         border: 1px solid rgba(0, 0, 0, 0.6);
     }
+
+    label[for="complete"] {
+        font-size: 1.2rem;
+    }
     
     input[type="checkbox"] {
-        vertical-align: middle;
+        vertical-align: bottom;
         accent-color: var(--button-green);
-        width: 19px;
-        height: 19px;
+        width: 25px;
+        height: 25px;
     }
 
-    .form-button-section {
+    #form-button-section {
+        margin-top: var(--spacing-sm);
         display: flex;
         gap: var(--spacing-xs);
         * {
             flex: 1;
+            font-size: 1.2rem;
         }
     }
 }
@@ -153,7 +164,6 @@ form {
 #book-cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(375px, 0.55fr));
-    justify-content: center;
     gap: var(--spacing-xl);
     margin-top: var(--spacing-md)
 }
@@ -164,7 +174,7 @@ form {
     border-radius: var(--border-radius);
     padding: var(--spacing-sm) var(--spacing-md);
     
-        .book-info-section {
+        #book-info-section {
             display: flex;
             flex-direction: column;
             gap: 4px;
@@ -175,7 +185,7 @@ form {
             color: var(--eggshell-white);
         }
         
-        .book-button-section {
+        #book-button-section {
             display: flex;
             justify-content: space-between;
         }
@@ -214,6 +224,7 @@ form {
         margin-right: 2px;
     }
     align-self: center;
+    margin-bottom: var(--spacing-md);
 }
 
 #open-btn,
@@ -235,5 +246,9 @@ form {
     main > .container {
         display: flex;
         flex-direction: column;
+    }
+
+    .container > #book-cards-container {
+        justify-content: center;
     }
 }

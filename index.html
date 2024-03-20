@@ -22,90 +22,41 @@
       <div class="container">
         <button class="btn" id="open-btn"><span>+</span>ADD BOOK</button>
         <dialog class="modal">
-            <form action="">
+            <form action="" method="post" onsubmit="closeModal(); return false">
                 <div class="form-row">
                     <label for="title">Book title: </label>
-                    <input type="text " name="title" id="title">
+                    <input type="text " name="title" id="title" required maxlength="245">
                 </div>
                 <div class="form-row">
                     <label for="author">Author: </label>
-                    <input type="text " name="author" id="author">
+                    <input type="text " name="author" id="author" required maxlength="245">
                 </div>
                 <div class="form-row">
                     <label for="pages">Pages: </label>
-                    <input type="text" inputmode="numeric" name="pages" id="pages">
+                    <input type="number" inputmode="numeric" name="pages" id="pages" required min="1" max="10000">
                 </div>
                 <div class="form-row">
-                    <label for="completed">Completed: </label>
-                    <input type="checkbox" name="completed" id="completed">
+                    <label for="complete">Completed: </label>
+                    <input type="checkbox" name="complete" id="complete">
                 </div>
-                <div class="form-button-section">
-                  <button class="btn" id="close-btn" formmethod="dialog">Cancel</button>
+                <div id="form-button-section">
+                  <button class="btn" id="close-btn">Close</button>
                   <button class="btn" id="submit-btn">Submit</button>
                 </div>
             </form>
           </dialog>
         <div id="book-cards-container">
           <div class="card">
-            <div class="book-info-section">
+            <div id="book-info-section">
               <p>Title: Harry Potter and the Phoenix Order</p>
               <p>Author: J.K. Rowling</p>
               <p>Pages: 394 pages</p>
             </div>
-            <div class="book-button-section">
+            <div id="book-button-section">
               <button class="btn read" id="read-btn">Read</button>
               <button class="btn" id="remove-btn">X</button>
             </div>
           </div>
-
-          <div class="card">
-            <div class="book-info-section">
-              <p>Title: Harry Potter and the Phoenix Order</p>
-              <p>Author: J.K. Rowling</p>
-              <p>Pages: 394 pages</p>
-            </div>
-            <div class="book-button-section">
-              <button class="btn read" id="read-btn">Read</button>
-              <button class="btn" id="remove-btn">X</button>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="book-info-section">
-              <p>Title: Harry Potter and the Phoenix Order</p>
-              <p>Author: J.K. Rowling</p>
-              <p>Pages: 394 pages</p>
-            </div>
-            <div class="book-button-section">
-              <button class="btn read" id="read-btn">Read</button>
-              <button class="btn" id="remove-btn">X</button>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="book-info-section">
-              <p>Title: Harry Potter and the Phoenix Order</p>
-              <p>Author: J.K. Rowling</p>
-              <p>Pages: 394 pages</p>
-            </div>
-            <div class="book-button-section">
-              <button class="btn read" id="read-btn">Read</button>
-              <button class="btn" id="remove-btn">X</button>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="book-info-section">
-              <p>Title: Harry Potter and the Phoenix Order</p>
-              <p>Author: J.K. Rowling</p>
-              <p>Pages: 394 pages</p>
-            </div>
-            <div class="book-button-section">
-              <button class="btn read" id="read-btn">Read</button>
-              <button class="btn" id="remove-btn">X</button>
-            </div>
-          </div>
-          
         </div>
       </div>
     </main>
