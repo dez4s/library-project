@@ -22,10 +22,12 @@
       <div class="container">
         <button class="btn" id="open-btn"><span>+</span>ADD BOOK</button>
         <dialog class="modal">
+            <!-- prevent form submission upon button press-->
             <form action="" method="post" onsubmit="closeModal(); return false">
-                <div class="form-row">
+                <div class="form-row"> 
                     <label for="title">Book title: </label>
                     <input type="text " name="title" id="title" required maxlength="245">
+                    <div id="book-exists-error">Book already exists!</div>
                 </div>
                 <div class="form-row">
                     <label for="author">Author: </label>
@@ -40,7 +42,7 @@
                     <input type="checkbox" name="complete" id="complete">
                 </div>
                 <div id="form-button-section">
-                  <button class="btn" id="close-btn">Close</button>
+                  <button class="btn" type="button" id="close-btn">Close</button>
                   <button class="btn" id="submit-btn">Submit</button>
                 </div>
             </form>

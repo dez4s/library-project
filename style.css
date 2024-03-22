@@ -128,10 +128,9 @@ form {
         font-size: 1.2rem;
     }
 
-    input:not([type="checkbox"]):hover {
+    input:not([type="checkbox"]):not(:user-invalid):hover {
         background-color: rgb(0, 0, 0, 0.01);
         border: 1px solid rgba(0, 0, 0, 0.6);
-        
     }
 
     input:not([type="checkbox"]):focus {
@@ -159,7 +158,41 @@ form {
             font-size: 1.2rem;
         }
     }
+    
+    label {
+        position: relative;
+    }
+    
+    input:user-invalid {
+        border: 1px solid red;
+        animation: 1s fadeIn;
+    }
+
+    label:not([for="complete"]):has(+ input)::after {
+        position: absolute;
+        
+    }
+
+    label:not([for="complete"]):has(+ input:user-invalid:not(:focus))::after {
+        animation: fadeIn 1s;
+        content: "(Please fill out this field)";
+        color: red;
+        font-size: 0.97rem;   
+        width: 200px;
+        top: 4.5px;
+        margin-left: 5px;
+    }
+
+    input[id="title"] + div#book-exists-error {
+        display: none;
+        margin-top: var(--spacing-xs);
+        font-size: 1.1rem;
+        font-weight: 450;
+        color: red;
+    }
 }
+
+
 
 #book-cards-container {
     display: grid;
@@ -250,5 +283,19 @@ form {
 
     .container > #book-cards-container {
         justify-content: center;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
