@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="javascript.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Library</title>
-    <link rel="shortcut icon" href="./images/bookshelf.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./images/bookshelf.png"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <header>
@@ -22,43 +29,64 @@
       <div class="container">
         <button class="btn" id="open-btn"><span>+</span>ADD BOOK</button>
         <dialog class="modal">
-            <!-- prevent form submission upon button press-->
-            <form action="" method="post" onsubmit="closeModal(); return false">
-                <div class="form-row"> 
-                    <label for="title">Book title: </label>
-                    <input type="text " name="title" id="title" required maxlength="245">
-                    <div id="book-exists-error">Book already exists!</div>
-                </div>
-                <div class="form-row">
-                    <label for="author">Author: </label>
-                    <input type="text " name="author" id="author" required maxlength="245">
-                </div>
-                <div class="form-row">
-                    <label for="pages">Pages: </label>
-                    <input type="number" inputmode="numeric" name="pages" id="pages" required min="1" max="10000">
-                </div>
-                <div class="form-row">
-                    <label for="complete">Completed: </label>
-                    <input type="checkbox" name="complete" id="complete">
-                </div>
-                <div id="form-button-section">
-                  <button class="btn" type="button" id="close-btn">Close</button>
-                  <button class="btn" id="submit-btn">Submit</button>
-                </div>
-            </form>
-          </dialog>
+          <!-- prevent form submission upon button press-->
+          <form action="" method="dialog">
+            <div class="form-row">
+              <label for="title">Book title: </label>
+              <input
+                type="text "
+                name="title"
+                id="title"
+                required
+                maxlength="245"
+              />
+              <div id="book-exists-error">Book already exists!</div>
+            </div>
+            <div class="form-row">
+              <label for="author">Author: </label>
+              <input
+                type="text "
+                name="author"
+                id="author"
+                required
+                maxlength="245"
+              />
+            </div>
+            <div class="form-row">
+              <label for="pages">Pages: </label>
+              <input
+                type="number"
+                inputmode="numeric"
+                name="pages"
+                id="pages"
+                required
+                min="1"
+                max="10000"
+              />
+            </div>
+            <div class="form-row">
+              <label for="complete">Completed: </label>
+              <input type="checkbox" name="complete" id="complete" />
+            </div>
+            <div id="form-button-section">
+              <button class="btn" type="button" id="close-btn">Close</button>
+              <button class="btn" id="submit-btn">Submit</button>
+            </div>
+          </form>
+        </dialog>
         <div id="book-cards-container">
-          <div class="card">
+          <!-- TEMPLATE -->
+          <!-- <div class="card">  
             <div id="book-info-section">
               <p>Title: Harry Potter and the Phoenix Order</p>
               <p>Author: J.K. Rowling</p>
-              <p>Pages: 394 pages</p>
+              <p>Pages: 986 pages</p>
             </div>
             <div id="book-button-section">
-              <button class="btn read" id="read-btn">Read</button>
+              <button class="btn" id="read-btn">Read</button>
               <button class="btn" id="remove-btn">X</button>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </main>
@@ -78,4 +106,3 @@
     </footer>
   </body>
 </html>
-
