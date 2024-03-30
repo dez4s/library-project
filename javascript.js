@@ -110,9 +110,7 @@ class Book {
 }
 
 // Template
-// const hp = new Book('Harry Potter and the Phoenix Order', 'J.K. Rowling', 986, 'not read yet');
-// console.log(hp.info());
-
+const hp = new Book('Harry Potter and the Phoenix Order', 'J.K. Rowling', 986, true);
 let myLibrary;
 // const myBooks = [];
 const openModalBtn = document.querySelector('#open-btn');
@@ -131,6 +129,8 @@ const bookExistsError = document.querySelector('div#book-exists-error')
 
 window.addEventListener('DOMContentLoaded', () => {
   myLibrary = new Library;
+  myLibrary.myBooks.push(hp);
+  myLibrary.createCardsFromLibrary();
 });
 
 //Reset the validation after the form is submitted
