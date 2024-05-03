@@ -1,18 +1,78 @@
 class Library {
+
+  openModalBtn = document.querySelector('#open-btn');
+  modal = document.querySelector('dialog.modal');
+  bookTitleInput = document.querySelector('input#title');
+  bookAuthorInput = document.querySelector('input#author');
+  bookPagesInput = document.querySelector('input#pages');
+  bookCompleteCheckbox = document.querySelector('input#complete');
+  bookCardsContainer = document.querySelector('#book-cards-container');
+  form = document.querySelector('form');
+  requiredInputs = document.querySelectorAll('[required]');
+  closeBtn = document.querySelector('#close-btn');
+  submitBtn = document.querySelector('#submit-btn');
+  bookExistsError = document.querySelector('div#book-exists-error');
+
   constructor() {
     this.myBooks = [];
+    this.#setupEventListeners();
+  }
+
+  #setupEventListeners() {
+    //Reset the validation after the form is submitted
+    this.form.addEventListener('submit', (e) => {
+      // Temporarily remove the required attribute from inputs
+      this.requiredInputs.forEach(input => {
+          input.removeAttribute('required');
+      });
+      
+      // Reset the form
+      this.form.reset();
+
+      // Restore the required attribute to inputs after a short delay
+      setTimeout(() => {
+        this.requiredInputs.forEach(input => {
+              input.setAttribute('required', '');
+          });
+      }, 100);
+    });
+
+    this.submitBtn.addEventListener('click', (e) => {
+      this.addBookToLibrary(e);
+      this.createCardsFromLibrary();
+    });
+
+    this.closeBtn.addEventListener('click', (e) => {
+      this.bookExistsError.style.display = 'none';
+      this.modal.close();
+    });
+
+    this.openModalBtn.addEventListener('click', () => this.modal.showModal());
+
+    this.modal.addEventListener("click", e => {
+        const modalDimensions = this.modal.getBoundingClientRect();
+        if 
+          (
+          e.clientX < modalDimensions.left ||
+          e.clientX > modalDimensions.right ||
+          e.clientY < modalDimensions.top ||
+          e.clientY > modalDimensions.bottom
+        ) {
+          this.modal.close()
+        }
+    });
   }
 
   addBookToLibrary(e) {
-    if (bookTitleInput.validity.valid && bookAuthorInput.validity.valid && bookPagesInput.validity.valid) {
-      const bookInstance = new Book(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, bookCompleteCheckbox.checked);
+    if (this.bookTitleInput.validity.valid && this.bookAuthorInput.validity.valid && this.bookPagesInput.validity.valid) {
+      const bookInstance = new Book(this.bookTitleInput.value, this.bookAuthorInput.value, this.bookPagesInput.value, this.bookCompleteCheckbox.checked);
   
       if( !(this.myBooks.some(item => item.title === bookInstance.title)) ) {
           this.myBooks.push(bookInstance);
-          bookExistsError.style.display = 'none';
+          this.bookExistsError.style.display = 'none';
         } else {
           e.preventDefault();
-          bookExistsError.style.display = 'block';
+          this.bookExistsError.style.display = 'block';
         }
     }
   }
@@ -27,7 +87,7 @@ class Library {
         const card = document.createElement('div');
         card.setAttribute('data-card-title', book.title)
         card.classList.add('card');
-        bookCardsContainer.appendChild(card);
+        this.bookCardsContainer.appendChild(card);
   
         const bookInfoSection = document.createElement('div');
   
@@ -109,69 +169,11 @@ class Book {
     }
 }
 
-// Template
-const hp = new Book('Harry Potter and the Phoenix Order', 'J.K. Rowling', 986, true);
-let myLibrary;
-// const myBooks = [];
-const openModalBtn = document.querySelector('#open-btn');
-const modal = document.querySelector('dialog.modal');
-const bookTitleInput = document.querySelector('input#title');
-const bookAuthorInput = document.querySelector('input#author');
-const bookPagesInput = document.querySelector('input#pages');
-const bookCompleteCheckbox = document.querySelector('input#complete');
-const bookCardsContainer = document.querySelector('#book-cards-container');
-const form = document.querySelector('form');
-const requiredInputs = document.querySelectorAll('[required]');
-const closeBtn = document.querySelector('#close-btn');
-const submitBtn = document.querySelector('#submit-btn');
-const bookExistsError = document.querySelector('div#book-exists-error')
-
-
 window.addEventListener('DOMContentLoaded', () => {
-  myLibrary = new Library;
+  const myLibrary = new Library();
+  const hp = new Book('Harry Potter and the Phoenix Order', 'J.K. Rowling', 986, true);
   myLibrary.myBooks.push(hp);
   myLibrary.createCardsFromLibrary();
 });
 
-//Reset the validation after the form is submitted
-form.addEventListener('submit', (e) => {
-  // Temporarily remove the required attribute from inputs
-  requiredInputs.forEach(input => {
-      input.removeAttribute('required');
-  });
-  
-  // Reset the form
-  form.reset();
 
-  // Restore the required attribute to inputs after a short delay
-  setTimeout(() => {
-    requiredInputs.forEach(input => {
-          input.setAttribute('required', '');
-      });
-  }, 100);
-});
-
-submitBtn.addEventListener('click', (e) => {
-  myLibrary.addBookToLibrary(e);
-  myLibrary.createCardsFromLibrary();
-});
-
-closeBtn.addEventListener('click', (e) => {
-  bookExistsError.style.display = 'none';
-  modal.close();
-});
-
-openModalBtn.addEventListener('click', () => modal.showModal());
-
-modal.addEventListener("click", e => {
-    const modalDimensions = modal.getBoundingClientRect();
-    if 
-      (
-      e.clientX < modalDimensions.left ||
-      e.clientX > modalDimensions.right ||
-      e.clientY < modalDimensions.top ||
-      e.clientY > modalDimensions.bottom
-    ) {
-      modal.close()
-    }
-});
